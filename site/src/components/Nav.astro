@@ -1,0 +1,122 @@
+---
+import { navLinks, site } from '../data/site';
+
+interface Props {
+  theme?: 'parent' | 'work' | '18g';
+}
+
+const { theme = 'parent' } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class={`site-nav theme-${theme}`} data-nav>
+  <div class="site-nav__inner wrap">
+    <a class="site-nav__brand" href="/" aria-label={`${site.name} home`}>
+      <img
+        src="/assets/wordmark/OnTheWheels-wordmark.svg"
+        alt=""
+        width="180"
+        height="28"
+        class="site-nav__mark"
+      />
+    </a>
+    <nav class="site-nav__links" aria-label="Primary">
+      {
+        navLinks.map((link) => {
+          const active =
+            link.href !== '/#contact' &&
+            (path === link.href || path.startsWith(link.href));
+          return (
+            <a
+              href={link.href}
+              class:list={['site-nav__link', { 'is-active': active }]}
+              aria-current={active ? 'page' : undefined}
+            >
+              {link.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-nav {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 50;
+    padding: 1.1rem 0;
+    mix-blend-mode: normal;
+    background: color-mix(in srgb, var(--field) 92%, transparent);
+    backdrop-filter: blur(12px);
+    color: var(--ink);
+    border-bottom: 1px solid transparent;
+    transition:
+      border-color 0.35s var(--ease-out),
+      background 0.35s var(--ease-out);
+  }
+
+  .site-nav.is-scrolled {
+    border-bottom-color: var(--line);
+  }
+
+  .site-nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .site-nav__brand {
+    text-decoration: none;
+    display: block;
+  }
+
+  .site-nav__mark {
+    width: clamp(7.5rem, 18vw, 9.5rem);
+    height: auto;
+    filter: brightness(0) invert(1);
+  }
+
+  .theme-parent .site-nav__mark,
+  .theme-work .site-nav__mark,
+  .theme-18g .site-nav__mark {
+    filter: brightness(0) invert(1);
+  }
+
+  .site-nav__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.35rem;
+    align-items: center;
+  }
+
+  .site-nav__link {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    opacity: 0.78;
+    transition: opacity 0.25s var(--ease-out);
+  }
+
+  .site-nav__link:hover,
+  .site-nav__link.is-active {
+    opacity: 1;
+  }
+
+  @media (max-width: 640px) {
+    .site-nav__inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .site-nav__links {
+      width: 100%;
+      gap: 0.55rem 1rem;
+    }
+  }
+</style>

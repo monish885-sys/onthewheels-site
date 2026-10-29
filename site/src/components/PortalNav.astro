@@ -1,0 +1,127 @@
+---
+interface Props {
+  brand: 'cc' | '18g';
+  homeHref: string;
+  markSrc: string;
+  markAlt: string;
+  links: { href: string; label: string }[];
+}
+
+const { brand, homeHref, markSrc, markAlt, links } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class={`portal-nav portal-nav--${brand}`} data-nav>
+  <div class="portal-nav__inner wrap">
+    <a class="portal-nav__brand" href={homeHref} aria-label={markAlt}>
+      {
+        brand === 'cc' ? (
+          <span class="portal-nav__cc">
+            <img src={markSrc} alt="" width="36" height="36" />
+            <span>Cultural Crossroads</span>
+          </span>
+        ) : (
+          <span class="portal-nav__18g">18g</span>
+        )
+      }
+    </a>
+    <nav class="portal-nav__links" aria-label="Portal">
+      {
+        links.map((link) => {
+          const active = path === link.href || (link.href.includes('#') && path === homeHref);
+          return (
+            <a
+              href={link.href}
+              class:list={['portal-nav__link', { 'is-active': active }]}
+            >
+              {link.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+  </div>
+</header>
+
+<style>
+  .portal-nav {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 50;
+    padding: 1.1rem 0;
+    background: color-mix(in srgb, var(--field) 92%, transparent);
+    backdrop-filter: blur(12px);
+    color: var(--ink);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.35s var(--ease-out);
+  }
+
+  .portal-nav.is-scrolled {
+    border-bottom-color: var(--line);
+  }
+
+  .portal-nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .portal-nav__brand {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .portal-nav__cc {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .portal-nav__cc img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.15rem;
+  }
+
+  .portal-nav__18g {
+    font-family: var(--font-display);
+    font-size: 1.55rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    background: linear-gradient(120deg, var(--cream) 20%, var(--amber) 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .portal-nav__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.25rem;
+  }
+
+  .portal-nav__link {
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    opacity: 0.75;
+  }
+
+  .portal-nav__link:hover,
+  .portal-nav__link.is-active {
+    opacity: 1;
+  }
+
+  @media (max-width: 640px) {
+    .portal-nav__inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

@@ -1,0 +1,65 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  brandName: string;
+}
+
+const { brandName } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="portal-foot">
+  <div class="wrap portal-foot__grid">
+    <p class="portal-foot__brand">{brandName}</p>
+    <p class="portal-foot__contact">
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+      <span aria-hidden="true"> · </span>
+      <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
+    </p>
+    <p class="portal-foot__legal">
+      © {year} {site.legal} · {site.city}
+      <span class="portal-foot__soft"> · {site.endorsement}</span>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .portal-foot {
+    border-top: 1px solid var(--line);
+    padding: 2.25rem 0;
+  }
+
+  .portal-foot__grid {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .portal-foot__brand {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .portal-foot__contact,
+  .portal-foot__legal {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .portal-foot__contact a {
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+
+  .portal-foot__contact a:hover {
+    border-bottom-color: currentColor;
+    opacity: 1;
+  }
+
+  .portal-foot__soft {
+    opacity: 0.7;
+  }
+</style>

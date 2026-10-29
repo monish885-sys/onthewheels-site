@@ -1,0 +1,113 @@
+---
+import PortalLayout from '../layouts/PortalLayout.astro';
+import { mailto, site } from '../data/site';
+import '../styles/truck.css';
+---
+
+<PortalLayout
+  portal="18g"
+  title="18g"
+  description="Specialty coffee on the move. Warm stops across Hyderabad. Coming soon."
+>
+  <div class="truck-page">
+    <div class="truck-glow" aria-hidden="true"></div>
+    <div class="truck-grain" data-grain aria-hidden="true"></div>
+
+    <header class="truck-page__intro">
+      <span class="chip">Coming · Hyderabad</span>
+      <h1 class="hero-tagline">Something cooking under the trucks.</h1>
+      <p class="hero-support">Specialty coffee, on the move. Tap a stop on the route.</p>
+    </header>
+
+    <div class="city-map" data-city-map id="route">
+      <svg class="city-map__svg" viewBox="0 0 1000 420" aria-hidden="true">
+        <rect x="40" y="40" width="120" height="70" rx="4" fill="#E8A05C" opacity="0.06"></rect>
+        <rect x="200" y="60" width="90" height="110" rx="4" fill="#F5E6D3" opacity="0.05"></rect>
+        <rect x="420" y="30" width="140" height="80" rx="4" fill="#E8A05C" opacity="0.07"></rect>
+        <rect x="700" y="50" width="110" height="95" rx="4" fill="#F5E6D3" opacity="0.05"></rect>
+        <rect x="820" y="200" width="100" height="70" rx="4" fill="#C4783A" opacity="0.08"></rect>
+        <rect x="100" y="300" width="160" height="60" rx="4" fill="#E8A05C" opacity="0.05"></rect>
+
+        <path
+          class="city-map__road"
+          d="M 80 280 C 160 240, 220 160, 320 150 S 480 200, 560 160 S 700 80, 820 120 S 900 220, 880 300 S 720 360, 560 340 S 320 300, 180 340 S 60 360, 80 280"
+        ></path>
+        <path
+          class="city-map__road-dash"
+          d="M 80 280 C 160 240, 220 160, 320 150 S 480 200, 560 160 S 700 80, 820 120 S 900 220, 880 300 S 720 360, 560 340 S 320 300, 180 340 S 60 360, 80 280"
+        ></path>
+
+        <g class="city-stop is-active" data-stop="banjara" tabindex="0" role="button" aria-label="Stop: Banjara">
+          <circle cx="120" cy="255" r="10"></circle>
+          <text x="120" y="238" text-anchor="middle">Banjara</text>
+        </g>
+        <g class="city-stop" data-stop="jubilee" tabindex="0" role="button" aria-label="Stop: Jubilee">
+          <circle cx="340" cy="155" r="10"></circle>
+          <text x="340" y="138" text-anchor="middle">Jubilee</text>
+        </g>
+        <g class="city-stop" data-stop="hitech" tabindex="0" role="button" aria-label="Stop: Hitech">
+          <circle cx="620" cy="145" r="10"></circle>
+          <text x="620" y="128" text-anchor="middle">Hitech</text>
+        </g>
+        <g class="city-stop" data-stop="gachibowli" tabindex="0" role="button" aria-label="Stop: Gachibowli">
+          <circle cx="860" cy="195" r="10"></circle>
+          <text x="860" y="178" text-anchor="middle">Gachibowli</text>
+        </g>
+        <g class="city-stop" data-stop="oldcity" tabindex="0" role="button" aria-label="Stop: Old City">
+          <circle cx="500" cy="345" r="10"></circle>
+          <text x="500" y="378" text-anchor="middle">Old City</text>
+        </g>
+      </svg>
+
+      <div class="truck-sprite" data-truck aria-hidden="true">
+        <svg viewBox="0 0 220 100" fill="none">
+          <defs>
+            <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#F5E6D3"></stop>
+              <stop offset="1" stop-color="#E8A05C"></stop>
+            </linearGradient>
+          </defs>
+          <path class="steam" d="M70 22c0-8 5-14 10-14s10 6 10 14" stroke="#E8A05C" stroke-width="2.2"></path>
+          <path class="steam steam--2" d="M92 18c0-7 4-12 8-12s8 5 8 12" stroke="#F5E6D3" stroke-width="2"></path>
+          <rect x="10" y="32" width="130" height="44" rx="5" fill="url(#body)"></rect>
+          <rect x="140" y="42" width="58" height="34" rx="4" fill="#F5E6D3"></rect>
+          <rect x="24" y="40" width="32" height="20" rx="2" fill="#2C1810" opacity="0.4"></rect>
+          <rect x="64" y="40" width="32" height="20" rx="2" fill="#2C1810" opacity="0.25"></rect>
+          <circle cx="155" cy="52" r="6" fill="#E8A05C" opacity="0.9"></circle>
+          <text x="100" y="60" fill="#2C1810" font-size="16" font-family="Georgia, serif">18g</text>
+          <circle cx="48" cy="78" r="13" fill="#1A1412" stroke="#E8A05C" stroke-width="3"></circle>
+          <circle cx="160" cy="78" r="13" fill="#1A1412" stroke="#E8A05C" stroke-width="3"></circle>
+          <circle cx="48" cy="78" r="4" fill="#E8A05C" opacity="0.5"></circle>
+          <circle cx="160" cy="78" r="4" fill="#E8A05C" opacity="0.5"></circle>
+        </svg>
+      </div>
+
+      <svg class="cup-float" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <path d="M14 22h28v22a10 10 0 0 1-10 10H24a10 10 0 0 1-10-10V22Z" stroke="#E8A05C" stroke-width="2"></path>
+        <path d="M42 28h6a6 6 0 0 1 0 12h-6" stroke="#E8A05C" stroke-width="2"></path>
+        <path d="M18 18c2-4 6-6 10-6M28 16c2-3 5-5 8-5" stroke="#F5E6D3" stroke-width="1.5" opacity="0.7"></path>
+      </svg>
+    </div>
+
+    <div class="truck-controls">
+      <button type="button" class="truck-btn" data-truck-play>Cruise</button>
+      <button type="button" class="truck-btn" data-truck-pause>Pause</button>
+    </div>
+  </div>
+
+  <section class="section-tight chapter" id="contact" style="padding: 3rem var(--gutter) 4rem; text-align: center">
+    <div class="wrap" style="max-width: 32rem; margin-inline: auto">
+      <p class="kicker">Contact</p>
+      <h2 class="display display-md">Be told when it moves.</h2>
+      <div class="cta-row" style="justify-content: center; margin-top: 1.5rem">
+        <a class="cta" href={mailto('Tell me when 18g moves')}>Write to 18g</a>
+        <a class="cta" href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import { initTruck } from '../scripts/truck';
+    initTruck();
+  </script>
+</PortalLayout>

@@ -1,0 +1,84 @@
+---
+import PortalNav from '../components/PortalNav.astro';
+import PortalFooter from '../components/PortalFooter.astro';
+import '../styles/global.css';
+
+interface Props {
+  portal: 'cc' | '18g';
+  title: string;
+  description: string;
+  ogImage?: string;
+}
+
+const { portal, title, description, ogImage = '/og.svg' } = Astro.props;
+
+const config =
+  portal === 'cc'
+    ? {
+        theme: 'work' as const,
+        themeColor: '#3E5346',
+        brandName: 'Cultural Crossroads',
+        homeHref: '/cc',
+        markSrc: '/assets/cc/logo.svg',
+        markAlt: 'Cultural Crossroads',
+        links: [
+          { href: '/cc#about', label: 'About' },
+          { href: '/cc#expand', label: 'Expansion' },
+          { href: '/cc#rentals', label: 'Rentals' },
+          { href: '/cc#contact', label: 'Contact' },
+        ],
+        fullTitle: `${title} · Cultural Crossroads`,
+      }
+    : {
+        theme: '18g' as const,
+        themeColor: '#2C1810',
+        brandName: '18g',
+        homeHref: '/18g',
+        markSrc: '/og.svg',
+        markAlt: '18g',
+        links: [
+          { href: '/18g#route', label: 'Route' },
+          { href: '/18g#contact', label: 'Contact' },
+        ],
+        fullTitle: `${title} · 18g`,
+      };
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={config.themeColor} />
+    <meta name="robots" content="index,follow" />
+    <link rel="icon" type="image/svg+xml" href={portal === 'cc' ? '/favicon-cc.svg' : '/favicon-18g.svg'} />
+    <meta property="og:title" content={config.fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>{config.fullTitle}</title>
+  </head>
+  <body class={`theme-${config.theme} portal-${portal}`}>
+    <a class="sr-only" href="#main">Skip to content</a>
+    <div class="page-wipe" data-wipe aria-hidden="true"></div>
+    <PortalNav
+      brand={portal}
+      homeHref={config.homeHref}
+      markSrc={config.markSrc}
+      markAlt={config.markAlt}
+      links={config.links}
+    />
+    <div class="page-shell" data-page>
+      <main id="main">
+        <slot />
+      </main>
+      <PortalFooter brandName={config.brandName} />
+    </div>
+    <script>
+      import { initMotion } from '../scripts/motion';
+      initMotion();
+    </script>
+  </body>
+</html>

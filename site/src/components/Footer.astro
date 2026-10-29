@@ -1,0 +1,76 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  endorsement?: boolean;
+}
+
+const { endorsement = false } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-foot section-tight">
+  <div class="wrap site-foot__grid">
+    {
+      endorsement && (
+        <p class="site-foot__endorse kicker">{site.endorsement}</p>
+      )
+    }
+    <p class="site-foot__legal">
+      © {year} {site.legal} · {site.city}
+    </p>
+    <p class="site-foot__contact">
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+      <span aria-hidden="true"> · </span>
+      <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
+      {
+        site.instagram ? (
+          <>
+            <span aria-hidden="true"> · </span>
+            <a
+              href={`https://instagram.com/${site.instagram.replace('@', '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram
+            </a>
+          </>
+        ) : null
+      }
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-foot {
+    border-top: 1px solid var(--line);
+    padding-block: 2.5rem;
+  }
+
+  .site-foot__grid {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .site-foot__endorse {
+    margin-bottom: 0.25rem;
+  }
+
+  .site-foot__legal,
+  .site-foot__contact {
+    margin: 0;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+
+  .site-foot__contact a {
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+
+  .site-foot__contact a:hover {
+    border-bottom-color: currentColor;
+    opacity: 1;
+  }
+</style>

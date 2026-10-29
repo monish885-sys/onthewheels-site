@@ -1,0 +1,268 @@
+.work-hero {
+  min-height: 92svh;
+  display: grid;
+  align-items: end;
+  padding: calc(var(--nav-h) + 2.5rem) 0 4.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.work-hero__bg {
+  position: absolute;
+  inset: -3%;
+  background:
+    radial-gradient(ellipse 70% 55% at 80% 15%, color-mix(in srgb, #5a7464 40%, transparent), transparent 55%),
+    radial-gradient(ellipse 60% 45% at 10% 85%, color-mix(in srgb, #1e2a24 50%, transparent), transparent 50%),
+    linear-gradient(155deg, #4a6354 0%, var(--sage) 48%, #2a3830 100%);
+  z-index: 0;
+}
+
+.work-hero .wrap {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1.1rem;
+  max-width: 40rem;
+}
+
+.work-hero__logo {
+  width: clamp(3.5rem, 8vw, 4.75rem);
+  height: auto;
+  border-radius: 0.2rem;
+}
+
+.work-hero__name {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  margin: 0;
+}
+
+.work-hero__line {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+  font-weight: 500;
+  margin: 0.25rem 0 0;
+  letter-spacing: -0.01em;
+}
+
+.work-hero__sub {
+  margin: 0;
+  color: var(--muted);
+  max-width: 34rem;
+}
+
+.field-ivory {
+  background: var(--ivory);
+  color: var(--sage);
+  --ink: var(--sage);
+  --muted: color-mix(in srgb, var(--sage) 70%, transparent);
+  --line: color-mix(in srgb, var(--sage) 28%, transparent);
+}
+
+.timeline {
+  display: grid;
+  gap: 1.75rem;
+  margin-top: 2.5rem;
+  position: relative;
+}
+
+@media (min-width: 900px) {
+  .timeline {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 0.55rem;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--line);
+  }
+}
+
+.timeline__item {
+  position: relative;
+  padding-top: 1.75rem;
+}
+
+.timeline__year {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin: 0 0 0.75rem;
+  opacity: 0.7;
+}
+
+@media (min-width: 900px) {
+  .timeline__year::before {
+    content: "";
+    position: absolute;
+    top: 0.35rem;
+    left: 0;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: var(--ink);
+  }
+}
+
+.timeline__item h3 {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 500;
+  margin: 0 0 0.65rem;
+  letter-spacing: -0.015em;
+}
+
+.timeline__item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.split-do {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2.25rem;
+}
+
+@media (min-width: 800px) {
+  .split-do {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+.split-do h3 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 500;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.015em;
+}
+
+.split-do p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.perspective-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+  margin-top: 2.5rem;
+}
+
+.perspective {
+  background: var(--field);
+  padding: 2rem 1.6rem 2.25rem;
+  min-height: 16rem;
+}
+
+.perspective h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  font-weight: 500;
+  margin: 0 0 0.85rem;
+  letter-spacing: -0.015em;
+}
+
+.perspective p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 36rem;
+}
+
+.team-mural {
+  margin-top: 2rem;
+  position: relative;
+  min-height: clamp(16rem, 42vw, 26rem);
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, transparent 40%, color-mix(in srgb, var(--sage) 85%, #000) 100%),
+    radial-gradient(ellipse 50% 70% at 20% 60%, #1a2420 0%, transparent 60%),
+    radial-gradient(ellipse 45% 65% at 50% 55%, #24302a 0%, transparent 55%),
+    radial-gradient(ellipse 50% 70% at 80% 60%, #1a2420 0%, transparent 60%),
+    #2a3830;
+}
+
+.team-mural__silhouettes {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 400'%3E%3Cg fill='%23000000' opacity='0.55'%3E%3Ccircle cx='120' cy='160' r='36'/%3E%3Cpath d='M60 360c10-90 30-150 60-150s50 60 60 150H60z'/%3E%3Ccircle cx='260' cy='140' r='42'/%3E%3Cpath d='M190 360c12-100 36-170 70-170s58 70 70 170H190z'/%3E%3Ccircle cx='420' cy='150' r='38'/%3E%3Cpath d='M355 360c10-92 32-155 65-155s55 63 65 155H355z'/%3E%3Ccircle cx='580' cy='130' r='46'/%3E%3Cpath d='M500 360c14-110 40-185 80-185s66 75 80 185H500z'/%3E%3Ccircle cx='740' cy='145' r='40'/%3E%3Cpath d='M670 360c10-95 34-160 70-160s60 65 70 160H670z'/%3E%3Ccircle cx='900' cy='138' r='42'/%3E%3Cpath d='M830 360c12-100 36-170 70-170s58 70 70 170H830z'/%3E%3Ccircle cx='1050' cy='155' r='36'/%3E%3Cpath d='M990 360c8-88 28-145 60-145s52 57 60 145H990z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center bottom;
+  opacity: 0.85;
+  filter: blur(1px);
+}
+
+.team-caption {
+  position: relative;
+  z-index: 1;
+  padding: 2rem var(--gutter);
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 500;
+  max-width: var(--max);
+  margin-inline: auto;
+  width: min(100%, var(--max));
+  align-self: end;
+  padding-top: clamp(10rem, 28vw, 16rem);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+  overflow: hidden;
+}
+
+@media (min-width: 800px) {
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+}
+
+.gallery__col {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+
+.gallery__col:nth-child(even) {
+  margin-top: 2.5rem;
+}
+
+.gallery figure {
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: color-mix(in srgb, var(--sage) 25%, #000);
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.gallery figure:hover img {
+  transform: scale(1.04);
+}
+
+.cta-subjects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin-top: 1.75rem;
+}

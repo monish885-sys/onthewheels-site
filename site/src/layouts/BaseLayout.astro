@@ -1,0 +1,58 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  theme?: 'parent' | 'work' | '18g';
+  endorsement?: boolean;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  theme = 'parent',
+  endorsement = false,
+  ogImage = '/og.svg',
+} = Astro.props;
+
+const fullTitle =
+  title === 'OnTheWheels'
+    ? 'OnTheWheels — Places, gatherings, and the software that runs them'
+    : `${title} · OnTheWheels`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={theme === 'work' ? '#3E5346' : theme === '18g' ? '#2C1810' : '#3C1720'} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>{fullTitle}</title>
+  </head>
+  <body class={`theme-${theme}`}>
+    <a class="sr-only" href="#main">Skip to content</a>
+    <div class="page-wipe" data-wipe aria-hidden="true"></div>
+    <Nav theme={theme} />
+    <div class="page-shell" data-page>
+      <main id="main">
+        <slot />
+      </main>
+      <Footer endorsement={endorsement} />
+    </div>
+    <script>
+      import { initMotion } from '../scripts/motion';
+      initMotion();
+    </script>
+  </body>
+</html>

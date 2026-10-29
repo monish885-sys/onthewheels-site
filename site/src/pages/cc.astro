@@ -1,0 +1,190 @@
+---
+import PortalLayout from '../layouts/PortalLayout.astro';
+import { mailto, site } from '../data/site';
+import '../styles/cc.css';
+
+const gallery = [
+  { src: '/assets/gallery/01-silver-okhli-musal.png', alt: 'Silver okhli musal' },
+  { src: '/assets/gallery/04-carved-console-arch.png', alt: 'Carved console arch' },
+  { src: '/assets/gallery/05-carved-room-divider.png', alt: 'Carved room divider' },
+  { src: '/assets/gallery/06-cane-settee.png', alt: 'Cane settee' },
+  { src: '/assets/gallery/07-tiled-pedestal-stands.png', alt: 'Pedestal stands' },
+  { src: '/assets/gallery/08-brass-floor-vases.png', alt: 'Brass floor vases' },
+];
+---
+
+<PortalLayout
+  portal="cc"
+  title="Cultural Crossroads"
+  description="Gatherings with a point of view — from weddings and family rooms into colleges and corporates. Hyderabad."
+>
+  <section class="cc-hero">
+    <div class="cc-hero__bg" aria-hidden="true"></div>
+    <div class="wrap">
+      <img
+        class="cc-hero__logo hero-wordmark"
+        src="/assets/cc/logo.svg"
+        alt=""
+        width="72"
+        height="72"
+      />
+      <h1 class="hero-tagline">Cultural Crossroads</h1>
+      <p class="cc-hero__line hero-support">Gatherings, held with a point of view.</p>
+      <p class="cc-hero__sub">
+        An events house and rental desk — rooted in weddings and private rooms, stepping into
+        colleges and corporates.
+      </p>
+      <div class="cta-row hero-ctas" style="margin-top: 0.5rem">
+        <a class="cta" href="#expand">How we expand</a>
+        <a class="cta" href="#contact">Write to us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section chapter field-ivory" id="about">
+    <div class="wrap">
+      <p class="kicker">What we are</p>
+      <h2 class="display display-lg">The events house. The rental desk.</h2>
+      <div class="split-two">
+        <div>
+          <h3>Events</h3>
+          <p>
+            Cultural Crossroads holds cultural nights, private rooms, and brand gatherings. The
+            evening is held — not decorated for Instagram alone.
+          </p>
+        </div>
+        <div>
+          <h3>CC Rentals</h3>
+          <p>
+            Premium pieces delivered for the day and collected after. You write with date, place,
+            and count. We match the room. Count in, count out.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section chapter" id="roots">
+    <div class="wrap">
+      <p class="kicker">Where we started</p>
+      <h2 class="display display-lg">Weddings &amp; word of mouth.</h2>
+      <p class="lead" style="margin-top: 1.15rem">
+        In 2024, Lavanya Balusu built Cultural Crossroads as a homemade house — family rooms,
+        private gatherings, reputation by referral. That craft is still the floor.
+      </p>
+      <p class="body" style="margin-top: 1rem">
+        Quiet years of events and rentals followed. Instagram became the public trail. The work
+        stayed close, careful, and local to Hyderabad.
+      </p>
+    </div>
+  </section>
+
+  <section class="section chapter field-ivory" id="expand">
+    <div class="wrap">
+      <p class="kicker">How we expand</p>
+      <h2 class="display display-lg">Weddings → colleges → corporates.</h2>
+      <p class="lead" style="margin-top: 1.1rem">
+        Same care for the room. Wider calendar. Clearer name on the door — under OnTheWheels in
+        2026.
+      </p>
+
+      <div class="path" aria-label="Expansion path">
+        <article class="path-step">
+          <span class="n">01</span>
+          <div>
+            <h3>Weddings &amp; family</h3>
+            <p>
+              Private rooms and home gatherings. Calm before the first guest. The root we do not
+              leave behind.
+            </p>
+          </div>
+        </article>
+        <div class="path-arrow" aria-hidden="true">→</div>
+        <article class="path-step">
+          <span class="n">02</span>
+          <div>
+            <h3>Colleges</h3>
+            <p>
+              Fest, nights, department days, farewells. One list from campus; one house keeps the
+              dates. Fair, named pricing.
+            </p>
+          </div>
+        </article>
+        <div class="path-arrow" aria-hidden="true">→</div>
+        <article class="path-step">
+          <span class="n">03</span>
+          <div>
+            <h3>Corporates</h3>
+            <p>
+              Brand rooms and company dates already on the calendar. One point of contact. Vendors
+              checked. Point of view before the deck starts.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section chapter" id="rooms">
+    <div class="wrap">
+      <p class="kicker">Who we hold for</p>
+      <h2 class="display display-lg">Three rooms we know.</h2>
+      <div class="audience">
+        <article>
+          <h3>Family</h3>
+          <p>Private nights and home gatherings — held, not staged.</p>
+        </article>
+        <article>
+          <h3>College</h3>
+          <p>The year campus already knows, kept on one calendar.</p>
+        </article>
+        <article>
+          <h3>Corporate</h3>
+          <p>Brand dates with clear scope and no surprise add-ons.</p>
+        </article>
+      </div>
+      <p class="body" style="margin-top: 1.75rem">
+        Hyderabad first. Another city only when a real site or partner appears.
+      </p>
+    </div>
+  </section>
+
+  <section class="section chapter field-ivory" id="rentals">
+    <div class="wrap">
+      <p class="kicker">CC Rentals</p>
+      <h2 class="display display-lg">Premium pieces for the day.</h2>
+      <p class="lead" style="margin-top: 1rem">
+        Not a cheap tier under the same name — matched inventory, delivered and collected.
+      </p>
+      <div class="gallery-strip" aria-label="Rental catalogue stills">
+        {
+          gallery.map((item) => (
+            <figure>
+              <img src={item.src} alt={item.alt} loading="lazy" width="400" height="533" />
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section chapter" id="contact">
+    <div class="wrap">
+      <p class="kicker">Contact</p>
+      <h2 class="display display-lg">Tell us the date and the room.</h2>
+      <p class="lead" style="margin-top: 1rem">
+        {site.email} · {site.phoneDisplay}
+      </p>
+      <div class="subject-row cta-row">
+        <a class="cta" href={mailto('Wedding / family room')}>Wedding / family</a>
+        <a class="cta" href={mailto('College gathering')}>College</a>
+        <a class="cta" href={mailto('Corporate date')}>Corporate</a>
+        <a class="cta" href={mailto('Rentals count')}>Rentals</a>
+      </div>
+      <div class="cta-band">
+        <a class="cta" href={`mailto:${site.email}`}>Email</a>
+        <a class="cta" href={`tel:${site.phoneTel}`}>Call / WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</PortalLayout>

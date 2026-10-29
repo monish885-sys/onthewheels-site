@@ -1,0 +1,34 @@
+# OS
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Dependencies & build
+node_modules/
+**/node_modules/
+dist/
+**/.astro/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+**/*.pem
+**/credentials.json
+**/secrets/
+
+# Logs & caches
+*.log
+npm-debug.log*
+.vercel/
+**/.vercel/
+
+# Local / brand / event work not needed to deploy the public site
+Inspo/
+estimates/
+events/
+brand/
+
+# Personal / legal PDFs (keep out of public GitHub)
+*.pdf
+!site/**/*.pdf

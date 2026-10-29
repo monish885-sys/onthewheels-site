@@ -1,0 +1,229 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site, mailto } from '../data/site';
+import '../styles/home.css';
+---
+
+<BaseLayout
+  title="OnTheWheels"
+  description="A studio of friends in Hyderabad — Cultural Crossroads and 18g under one roof."
+  theme="parent"
+>
+  <section class="hero" aria-label="Studio introduction">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="wrap">
+      <img
+        class="hero-wordmark"
+        src="/assets/wordmark/OnTheWheels-wordmark.svg"
+        alt="OnTheWheels"
+        width="640"
+        height="96"
+      />
+      <p class="hero-tagline">{site.tagline}</p>
+      <p class="hero-support">{site.homeSupport}</p>
+      <div class="cta-row hero-ctas">
+        <a class="cta" href="#about">About</a>
+        <a class="cta" href="/cc">CC</a>
+        <a class="cta" href="/18g">18g</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="story">
+    <!-- About -->
+    <section class="story-chapter story-chapter--ivory chapter" id="about">
+      <div class="story-float" aria-hidden="true" data-parallax>
+        <span data-float>About</span>
+        <span data-float>Studio</span>
+      </div>
+      <div class="wrap">
+        <p class="kicker">About us</p>
+        <h2 class="display display-lg">A venture studio of friends.</h2>
+        <p class="lead">
+          We build and operate hospitality, gatherings, and the software that connects them —
+          starting with our own rooms in Hyderabad.
+        </p>
+        <div class="icon-row">
+          <span class="icon-pill">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19V9l8-5 8 5v10H4Z" stroke="currentColor" stroke-width="1.4"/><path d="M9 19v-6h6v6" stroke="currentColor" stroke-width="1.4"/></svg>
+            Hospitality
+          </span>
+          <span class="icon-pill">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/><path d="M8 14c1.5 2 6.5 2 8 0" stroke="currentColor" stroke-width="1.4"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg>
+            Culture
+          </span>
+          <span class="icon-pill">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M8 9h8M8 13h5" stroke="currentColor" stroke-width="1.4"/></svg>
+            Software · later
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why -->
+    <section class="story-chapter chapter" id="why">
+      <div class="story-float" aria-hidden="true" data-parallax>
+        <span data-float>Why</span>
+        <span data-float>Here</span>
+      </div>
+      <div class="wrap" style="max-width: 52rem">
+        <p class="kicker">Why we are here</p>
+        <h2 class="display display-lg">Four years of plans. One house.</h2>
+        <p class="lead">
+          So friends can build together — not alone. Guests meet the child brands. Partners meet
+          the studio.
+        </p>
+        <div class="why-grid">
+          <article class="why-card">
+            <span class="num">01</span>
+            <div>
+              <h3>Stack of plans</h3>
+              <p>Hospitality, culture, mobile formats — waiting for a shared roof.</p>
+            </div>
+          </article>
+          <article class="why-card">
+            <span class="num">02</span>
+            <div>
+              <h3>Named 2026</h3>
+              <p>OnTheWheels Hospitality LLP. Hyderabad. The studio is the parent.</p>
+            </div>
+          </article>
+          <article class="why-card">
+            <span class="num">03</span>
+            <div>
+              <h3>Ship on the street</h3>
+              <p>CC is live. 18g is cooking. Software stays in-house until proven.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Future -->
+    <section class="story-chapter story-chapter--ivory chapter" id="future">
+      <div class="story-float" aria-hidden="true" data-parallax>
+        <span data-float>Next</span>
+        <span data-float>Plan</span>
+      </div>
+      <div class="wrap">
+        <p class="kicker">Future plan</p>
+        <h2 class="display display-lg">Stop. Gather. Return.</h2>
+        <p class="lead">Hyderabad first — built in that order. Tap a lane.</p>
+
+        <div class="plan-rail" data-plan-rail>
+          <button type="button" class="plan-item is-on" data-plan="cc">
+            <i class="dot" aria-hidden="true"></i>
+            <div>
+              <strong>Cultural Crossroads</strong>
+              <span>Widen colleges & corporates. Same craft for the room.</span>
+            </div>
+            <em class="tag">Live</em>
+          </button>
+          <button type="button" class="plan-item" data-plan="18g">
+            <i class="dot" aria-hidden="true"></i>
+            <div>
+              <strong>18g</strong>
+              <span>Specialty coffee under trucks — move across the city.</span>
+            </div>
+            <em class="tag">Coming</em>
+          </button>
+          <button type="button" class="plan-item" data-plan="soft">
+            <i class="dot" aria-hidden="true"></i>
+            <div>
+              <strong>Software</strong>
+              <span>Tools proved on our floor, offered out later.</span>
+            </div>
+            <em class="tag">Internal</em>
+          </button>
+        </div>
+
+        <div class="plan-preview" data-plan-preview aria-live="polite">
+          <div class="plan-preview__glow" aria-hidden="true"></div>
+          <p data-plan-copy>
+            Hold more nights in Hyderabad — college, family, brand — with one house behind them.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="doors" aria-label="Ventures">
+    <a class="door door--cc" href="/cc">
+      <div class="door__art" aria-hidden="true">
+        <div class="door-stage">
+          <div class="door-stage__spot"></div>
+          <div class="door-stage__arch"></div>
+          <div class="door-stage__floor"></div>
+        </div>
+      </div>
+      <p class="door__label">Cultural Crossroads</p>
+      <h2 class="door__title">CC</h2>
+      <p class="door__hint">Weddings to colleges &amp; corporates.</p>
+      <span class="door__go">Open CC portal →</span>
+    </a>
+
+    <a class="door door--18g" href="/18g">
+      <div class="door__art" aria-hidden="true">
+        <svg class="door-truck" viewBox="0 0 200 90" fill="none">
+          <defs>
+            <linearGradient id="cab" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#F5E6D3"/>
+              <stop offset="1" stop-color="#E8A05C"/>
+            </linearGradient>
+          </defs>
+          <rect x="8" y="28" width="120" height="42" rx="4" fill="url(#cab)"/>
+          <rect x="128" y="38" width="52" height="32" rx="3" fill="#F5E6D3" opacity="0.85"/>
+          <circle cx="42" cy="72" r="12" fill="#1A1412" stroke="#E8A05C" stroke-width="3"/>
+          <circle cx="148" cy="72" r="12" fill="#1A1412" stroke="#E8A05C" stroke-width="3"/>
+          <rect x="20" y="36" width="28" height="18" rx="2" fill="#2C1810" opacity="0.45"/>
+          <text x="68" y="54" fill="#2C1810" font-size="14" font-family="Georgia, serif">18g</text>
+          <path d="M55 22c0-6 4-10 8-10s8 4 8 10" stroke="#E8A05C" stroke-width="2" opacity="0.7"/>
+          <path d="M72 18c0-5 3-8 6-8s6 3 6 8" stroke="#F5E6D3" stroke-width="2" opacity="0.5"/>
+        </svg>
+      </div>
+      <p class="door__label">Coming · Hyderabad</p>
+      <h2 class="door__title">18g</h2>
+      <p class="door__hint">Warm coffee, moving city.</p>
+      <span class="door__go">Open 18g portal →</span>
+    </a>
+  </section>
+
+  <section class="contact-band chapter" id="contact">
+    <div class="wrap">
+      <p class="kicker">Reach</p>
+      <h2 class="display display-md">Write or call.</h2>
+      <div class="contact-grid">
+        <a class="contact-item" href={`mailto:${site.email}`}>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="1.5" stroke="currentColor" stroke-width="1.4"></rect>
+            <path d="M3.5 6.5 12 13l8.5-6.5" stroke="currentColor" stroke-width="1.4"></path>
+          </svg>
+          <span>Email</span>
+          <strong>{site.email}</strong>
+        </a>
+        <a class="contact-item" href={`tel:${site.phoneTel}`}>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 3.5h3.2l1.2 4.2-2 1.2a12 12 0 0 0 5.7 5.7l1.2-2 4.2 1.2V19a1.5 1.5 0 0 1-1.5 1.5A15.5 15.5 0 0 1 3.5 5 1.5 1.5 0 0 1 5 3.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"></path>
+          </svg>
+          <span>Phone</span>
+          <strong>{site.phoneDisplay}</strong>
+        </a>
+        <a class="contact-item" href={mailto('Hello from OnTheWheels')}>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.4"></rect>
+            <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.4"></circle>
+            <circle cx="17.4" cy="6.6" r="1" fill="currentColor"></circle>
+          </svg>
+          <span>Instagram</span>
+          <strong>{site.instagram ? `@${site.instagram.replace('@', '')}` : 'Soon'}</strong>
+        </a>
+      </div>
+      <a class="careers-chip" href="/careers">The bench is open →</a>
+    </div>
+  </section>
+
+  <script>
+    import { initHomeStory } from '../scripts/home-story';
+    initHomeStory();
+  </script>
+</BaseLayout>

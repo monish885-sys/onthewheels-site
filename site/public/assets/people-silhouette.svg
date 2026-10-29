@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" fill="none" role="img" aria-labelledby="peopleTitle">
+  <title id="peopleTitle">Group silhouette placeholder</title>
+  <rect width="1200" height="420" fill="#3C1720"/>
+  <g fill="#F3EEE6" opacity="0.18">
+    <ellipse cx="180" cy="390" rx="70" ry="18"/>
+    <ellipse cx="320" cy="390" rx="70" ry="18"/>
+    <ellipse cx="460" cy="390" rx="74" ry="18"/>
+    <ellipse cx="600" cy="390" rx="78" ry="18"/>
+    <ellipse cx="740" cy="390" rx="74" ry="18"/>
+    <ellipse cx="880" cy="390" rx="70" ry="18"/>
+    <ellipse cx="1020" cy="390" rx="70" ry="18"/>
+  </g>
+  <g fill="#F3EEE6" opacity="0.88">
+    <!-- left cluster -->
+    <circle cx="180" cy="150" r="34"/>
+    <path d="M120 340c8-70 28-118 60-118s52 48 60 118H120Z"/>
+    <circle cx="300" cy="135" r="38"/>
+    <path d="M230 340c10-78 34-130 70-130s60 52 70 130H230Z"/>
+    <circle cx="430" cy="145" r="36"/>
+    <path d="M365 340c8-74 30-124 65-124s57 50 65 124H365Z"/>
+    <!-- center -->
+    <circle cx="560" cy="120" r="42"/>
+    <path d="M485 340c12-88 38-148 75-148s63 60 75 148H485Z"/>
+    <circle cx="690" cy="128" r="40"/>
+    <path d="M618 340c10-82 34-140 72-140s62 58 72 140H618Z"/>
+    <!-- right -->
+    <circle cx="820" cy="142" r="36"/>
+    <path d="M755 340c8-74 30-124 65-124s57 50 65 124H755Z"/>
+    <circle cx="940" cy="138" r="38"/>
+    <path d="M870 340c10-78 34-130 70-130s60 52 70 130H870Z"/>
+    <circle cx="1055" cy="155" r="32"/>
+    <path d="M1000 340c6-66 24-110 55-110s49 44 55 110H1000Z"/>
+  </g>
+  <rect x="0" y="0" width="1200" height="420" fill="url(#wash)" opacity="0.35"/>
+  <defs>
+    <linearGradient id="wash" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3C1720" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#3C1720" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+</svg>

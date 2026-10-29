@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site, mailto } from '../data/site';
+import '../styles/teasers.css';
+import '../styles/home.css';
+
+const intents = [
+  {
+    title: 'Operations & floor',
+    blurb: 'The night as it runs.',
+    subject: 'Careers — Operations & floor',
+    icon: 'floor',
+  },
+  {
+    title: 'Design & culture',
+    blurb: 'Rooms with a point of view.',
+    subject: 'Careers — Design & culture',
+    icon: 'culture',
+  },
+  {
+    title: 'Build & software',
+    blurb: 'Tools proved on our floor.',
+    subject: 'Careers — Build & software',
+    icon: 'build',
+  },
+];
+---
+
+<BaseLayout
+  title="Careers"
+  description="Join OnTheWheels — floor, culture, or build. Interest only."
+  theme="parent"
+>
+  <section class="careers-hero chapter">
+    <div class="wrap">
+      <p class="kicker">Careers</p>
+      <h1 class="display display-xl hero-tagline">Floor + system.</h1>
+      <p class="lead hero-support" style="margin-top: 1rem">
+        Friends shipping real rooms in Hyderabad. Taste matters. So does close of service.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-tight chapter invert-field" style="padding-bottom: 4rem">
+    <div class="wrap">
+      <div class="intent-list">
+        {
+          intents.map((intent) => (
+            <a class="intent" href={mailto(intent.subject)}>
+              <div>
+                <h3>{intent.title}</h3>
+                <p>{intent.blurb}</p>
+              </div>
+              <span class="arrow">Write →</span>
+            </a>
+          ))
+        }
+      </div>
+      <div class="cta-row" style="margin-top: 2rem">
+        <a class="cta" href={`mailto:${site.email}`}>{site.email}</a>
+        <a class="cta" href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
