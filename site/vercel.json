@@ -21,6 +21,18 @@
       "source": "/ventures/:path*",
       "destination": "/cc",
       "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "cc.onthewheels.in" }],
+      "destination": "https://onthewheels.in/cc",
+      "permanent": false
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "18g.onthewheels.in" }],
+      "destination": "https://onthewheels.in/18g",
+      "permanent": false
     }
   ]
 }
