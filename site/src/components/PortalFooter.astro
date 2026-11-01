@@ -3,9 +3,11 @@ import { site } from '../data/site';
 
 interface Props {
   brandName: string;
+  instagramHref?: string | null;
+  instagramLabel?: string;
 }
 
-const { brandName } = Astro.props;
+const { brandName, instagramHref = null, instagramLabel = 'Instagram' } = Astro.props;
 const year = new Date().getFullYear();
 ---
 
@@ -16,6 +18,16 @@ const year = new Date().getFullYear();
       <a href={`mailto:${site.email}`}>{site.email}</a>
       <span aria-hidden="true"> · </span>
       <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
+      {
+        instagramHref ? (
+          <>
+            <span aria-hidden="true"> · </span>
+            <a href={instagramHref} target="_blank" rel="noopener noreferrer">
+              {instagramLabel}
+            </a>
+          </>
+        ) : null
+      }
     </p>
     <p class="portal-foot__legal">
       © {year} {site.legal} · {site.city}

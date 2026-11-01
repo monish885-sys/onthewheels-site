@@ -55,30 +55,40 @@ export function initHomeStory() {
   });
 
   // Why cards stagger
-  gsap.from('.why-card', {
-    y: 40,
-    opacity: 0,
-    stagger: 0.1,
-    duration: 0.8,
-    ease: 'power3.out',
-    scrollTrigger: {
-      trigger: '.why-grid',
-      start: 'top 80%',
-      once: true,
+  gsap.fromTo(
+    '.why-card',
+    { y: 40, opacity: 0 },
+    {
+      y: 0,
+      opacity: 1,
+      stagger: 0.1,
+      duration: 0.8,
+      ease: 'power3.out',
+      clearProps: 'transform',
+      scrollTrigger: {
+        trigger: '.why-grid',
+        start: 'top 80%',
+        once: true,
+      },
     },
-  });
+  );
 
   // Plan items slide
-  gsap.from('.plan-item', {
-    x: -24,
-    opacity: 0,
-    stagger: 0.08,
-    duration: 0.7,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: '.plan-rail',
-      start: 'top 82%',
-      once: true,
+  gsap.fromTo(
+    '.plan-item',
+    { x: -24, opacity: 0 },
+    {
+      x: 0,
+      opacity: 1,
+      stagger: 0.08,
+      duration: 0.7,
+      ease: 'power2.out',
+      clearProps: 'transform',
+      scrollTrigger: {
+        trigger: '.plan-rail',
+        start: 'top 82%',
+        once: true,
+      },
     },
-  });
+  );
 }

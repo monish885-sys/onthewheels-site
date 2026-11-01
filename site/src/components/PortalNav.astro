@@ -28,11 +28,18 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
     <nav class="portal-nav__links" aria-label="Portal">
       {
         links.map((link) => {
-          const active = path === link.href || (link.href.includes('#') && path === homeHref);
+          // Only mark exact path matches — never light up every #anchor on the portal home
+          const active =
+            !link.href.startsWith('http') &&
+            !link.href.includes('#') &&
+            path === link.href.replace(/\/$/, '');
           return (
             <a
               href={link.href}
               class:list={['portal-nav__link', { 'is-active': active }]}
+              data-portal-link
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+              rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
             >
               {link.label}
             </a>

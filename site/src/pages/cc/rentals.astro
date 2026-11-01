@@ -1,0 +1,130 @@
+---
+import PortalLayout from '../../layouts/PortalLayout.astro';
+import { mailto, site, cc, igUrl } from '../../data/site';
+import { rentalItems } from '../../data/cc-catalogue';
+import '../../styles/cc.css';
+
+const ig = igUrl(cc.rentalsInstagram);
+---
+
+<PortalLayout
+  portal="cc"
+  title="CC Rentals"
+  description="Premium rental pieces for the day — catalogue from Cultural Crossroads. Hyderabad."
+>
+  <section class="cc-hero cc-hero--rentals">
+    <div class="cc-hero__bg" aria-hidden="true"></div>
+    <div class="wrap">
+      <img
+        class="cc-hero__logo hero-wordmark"
+        src="/assets/cc/logo.svg"
+        alt=""
+        width="72"
+        height="72"
+      />
+      <h1 class="hero-tagline">CC Rentals</h1>
+      <p class="cc-hero__line hero-support">Premium pieces for the day.</p>
+      <p class="cc-hero__sub">
+        Delivered for the date, collected after. Match the room — then browse the catalogue.
+      </p>
+      <div class="cta-row hero-ctas" style="margin-top: 0.5rem">
+        <a class="cta" href="#catalogue">Catalogue</a>
+        <a class="cta" href={ig} target="_blank" rel="noopener noreferrer">
+          Instagram @{cc.rentalsInstagram}
+        </a>
+        <a class="cta" href="/cc">Events portal</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section chapter" id="catalogue">
+    <div class="wrap">
+      <p class="kicker">Catalogue</p>
+      <h2 class="display display-lg">Pieces on the list.</h2>
+      <p class="lead" style="margin-top: 1rem">
+        From the Instagram catalogue posts. Tap a piece to open @{cc.rentalsInstagram}.
+      </p>
+
+      <div class="rental-filters" role="toolbar" aria-label="Filter rentals">
+        <button type="button" class="is-active" data-rental-filter="all">All</button>
+        <button type="button" data-rental-filter="ritual">Ritual</button>
+        <button type="button" data-rental-filter="furniture">Furniture</button>
+        <button type="button" data-rental-filter="florals">Florals / stands</button>
+      </div>
+
+      <div class="rental-grid" data-rentals>
+        {
+          rentalItems.map((item) => {
+            const tags = [
+              item.use.toLowerCase().includes('haldi') ||
+              item.use.toLowerCase().includes('ritual') ||
+              item.use.toLowerCase().includes('nalangu') ||
+              item.use.toLowerCase().includes('mehendi')
+                ? 'ritual'
+                : '',
+              item.use.toLowerCase().includes('seat') ||
+              item.use.toLowerCase().includes('backdrop') ||
+              item.use.toLowerCase().includes('console') ||
+              item.use.toLowerCase().includes('divider')
+                ? 'furniture'
+                : '',
+              item.use.toLowerCase().includes('floral') ||
+              item.use.toLowerCase().includes('aisle') ||
+              item.use.toLowerCase().includes('pedestal') ||
+              item.use.toLowerCase().includes('vase')
+                ? 'florals'
+                : '',
+            ]
+              .filter(Boolean)
+              .join(' ');
+            return (
+              <a
+                class="rental-card"
+                href={item.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-rental
+                data-tags={tags || 'furniture'}
+              >
+                <div class="rental-card__media">
+                  <img src={item.image} alt={item.alt} loading="lazy" width="600" height="800" />
+                  <span class="rental-card__ig">Instagram</span>
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.use}</p>
+                <p class="meta">{item.meta}</p>
+              </a>
+            );
+          })
+        }
+      </div>
+
+      <div class="cta-band">
+        <a class="cta" href={ig} target="_blank" rel="noopener noreferrer">
+          Rentals on Instagram
+        </a>
+        <a class="cta" href={mailto('Rentals count')}>Request a count</a>
+        <a class="cta" href={`tel:${site.phoneTel}`}>Call / WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section chapter field-ivory" id="contact">
+    <div class="wrap">
+      <p class="kicker">Contact</p>
+      <h2 class="display display-lg">Date, place, count.</h2>
+      <p class="lead" style="margin-top: 1rem">
+        {site.email} · {site.phoneDisplay}
+      </p>
+      <div class="cta-band">
+        <a class="cta" href={mailto('Rentals count')}>Email rentals</a>
+        <a class="cta" href="/cc#nights">See event nights →</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import { initRentalsFilter } from '../../scripts/cc-timeline';
+    initRentalsFilter();
+  </script>
+</PortalLayout>

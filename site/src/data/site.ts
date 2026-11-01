@@ -5,13 +5,24 @@ export const site = {
   email: 'onthewheels2k26@gmail.com',
   phoneDisplay: '96407 35454',
   phoneTel: '+919640735454',
-  /** Set exact handle before public launch — interim placeholder */
+  /** Parent studio IG — confirm before public push */
   instagram: null as string | null,
   tagline: 'Places, gatherings, and the software that runs them.',
   shortMark: 'Built to move.',
   homeSupport: 'Friends. Many plans. One roof in Hyderabad.',
   endorsement: 'An OnTheWheels venture',
 } as const;
+
+/** Cultural Crossroads portal — live handle */
+export const cc = {
+  name: 'Cultural Crossroads',
+  instagram: 'cultural.crossroads',
+  /** Rentals posts live on the same grid until a free rentals handle is claimed */
+  rentalsInstagram: 'cultural.crossroads',
+} as const;
+
+export const igUrl = (handle: string) =>
+  `https://www.instagram.com/${handle.replace('@', '')}/`;
 
 export const mailto = (subject: string, body?: string) => {
   const params = new URLSearchParams({ subject });

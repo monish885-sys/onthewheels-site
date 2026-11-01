@@ -25,13 +25,13 @@
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "cc.onthewheels.in" }],
-      "destination": "https://onthewheels.in/cc",
+      "destination": "/cc",
       "permanent": false
     },
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "18g.onthewheels.in" }],
-      "destination": "https://onthewheels.in/18g",
+      "destination": "/18g",
       "permanent": false
     }
   ]

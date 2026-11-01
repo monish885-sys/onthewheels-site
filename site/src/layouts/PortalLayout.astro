@@ -1,6 +1,7 @@
 ---
 import PortalNav from '../components/PortalNav.astro';
 import PortalFooter from '../components/PortalFooter.astro';
+import { cc, igUrl } from '../data/site';
 import '../styles/global.css';
 
 interface Props {
@@ -23,11 +24,14 @@ const config =
         markAlt: 'Cultural Crossroads',
         links: [
           { href: '/cc#about', label: 'About' },
-          { href: '/cc#expand', label: 'Expansion' },
-          { href: '/cc#rentals', label: 'Rentals' },
+          { href: '/cc#nights', label: 'Nights' },
+          { href: '/cc/rentals', label: 'Rentals' },
           { href: '/cc#contact', label: 'Contact' },
+          { href: igUrl(cc.instagram), label: 'Instagram' },
         ],
         fullTitle: `${title} · Cultural Crossroads`,
+        instagramHref: igUrl(cc.instagram),
+        instagramLabel: `@${cc.instagram}`,
       }
     : {
         theme: '18g' as const,
@@ -41,6 +45,8 @@ const config =
           { href: '/18g#contact', label: 'Contact' },
         ],
         fullTitle: `${title} · 18g`,
+        instagramHref: null as string | null,
+        instagramLabel: 'Instagram',
       };
 ---
 
@@ -74,7 +80,11 @@ const config =
       <main id="main">
         <slot />
       </main>
-      <PortalFooter brandName={config.brandName} />
+      <PortalFooter
+        brandName={config.brandName}
+        instagramHref={config.instagramHref}
+        instagramLabel={config.instagramLabel}
+      />
     </div>
     <script>
       import { initMotion } from '../scripts/motion';
